@@ -32,6 +32,8 @@ const game = new Game(commandLineOptions);
 
 if (menu.playGame) {
     game.play(commandLineOptions[menu.getUserIndexChoice()], commandLineOptions[rand]);
+    console.log('Your move: ' + commandLineOptions[menu.getUserIndexChoice()]);
+    console.log('Computer move: ' + commandLineOptions[rand]);
     switch (true) {
         case game.isDraw:
             console.log('Draw');
