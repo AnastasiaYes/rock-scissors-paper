@@ -4,12 +4,12 @@ import HelpTable from './helpTable.js';
 import HashKey from './hashKey.js';
 
 
-const commandLineOptions = [...new Set(process.argv.splice(2))];
-
+const rawOptions = process.argv.filter((el, i) => i >= 2);
+const commandLineOptions = [...new Set(rawOptions)];
 if (commandLineOptions.length % 2 === 0) {
     console.log('The number of parameters to be passed must be odd');
     process.exit(0);
-} else if (process.argv.splice(2).length !== commandLineOptions.length) {
+} else if (rawOptions.length !== commandLineOptions.length) {
     console.log('All parameters must be unique');
     process.exit(0);
 }
