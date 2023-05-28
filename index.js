@@ -9,6 +9,9 @@ const commandLineOptions = [...new Set(process.argv.splice(2))];
 if (commandLineOptions.length % 2 === 0) {
     console.log('The number of parameters to be passed must be odd');
     process.exit(0);
+} else if (process.argv.splice(2).length !== commandLineOptions.length) {
+    console.log('All parameters must be unique');
+    process.exit(0);
 }
 
 for (let i = 0; i < commandLineOptions.length; i++) {
@@ -16,7 +19,7 @@ for (let i = 0; i < commandLineOptions.length; i++) {
         console.log('The passed parameters must be greater than or equal to 3');
         process.exit(0);
     } else if (!(new RegExp(/^[A-Za-z0-9 ]+$/)).test(commandLineOptions[i])) {
-        console.log('Cyrillic is forbidden')
+        console.log('Cyrillic is forbidden');
         process.exit(0);
     }
 }
